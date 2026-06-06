@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between; /* 🔥 REQUIRED */
+  align-items: center;
+
+  padding: 25px 50px;
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.3s ease;
+}
+
+/* ===================== GLOW LINE ===================== */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90%;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #1e00ff9b,
+    rgba(255, 0, 0, 0.701),
+    #1e00ff9b,
+    transparent
+  );
+
+  filter: blur(3px);
+  opacity: 0.9;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-right {
+  background: transparent; /* coffee brown */
+  color: black;
+  border: none;
+  padding: 8px 85px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn {
+  padding: 6px 15px;
+  border: none;
+  background: transparent;
+  color: #c49b63;
+}
+
+.login-btn:hover {
+  background: #8b5a3c;
+  box-shadow: 0 0 10px rgba(139, 90, 60, 0.6);
+  border-radius: 3px;
+}
+
+.logo {
+  color: rgb(255, 0, 0);
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 50px;
+}
+
+.hero span {
+  color: #ff4d6d;
+}
+
+.hero-cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.card {
+  width: 180px;
+  height: 300px;
+  margin: 0 10px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SOFTWARE */
+.software {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.tools {
+  display: flex;
+  justify-content: center;
+}
+
+.tool {
+  margin: 20px;
+  text-align: center;
+}
+
+.tool img {
+  width: 60px;
+}
+
+.projects {
+  padding: 120px 8%;
+  position: relative;
+}
+
+/* GRID (NO SCROLL BUTTONS) */
+.project-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* VERTICAL CARD */
+.project-card {
+  width: 220px;
+  height: 380px; /* vertical format */
+
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  cursor: pointer;
+  transform-style: preserve-3d;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+/* VIDEO */
+.project-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TITLE */
+.project-card p {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: white;
+  font-size: 14px;
+}
+
+/* 🎬 HOVER DEPTH */
+.project-card:hover {
+  transform: scale(1.1) translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  z-index: 5;
+}
+
+/* DIM OTHERS */
+.project-container:hover .project-card:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* 🎬 SCROLL REVEAL */
+.project-card {
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🍎 PARALLAX DEPTH */
+.project-card video {
+  transform: translateZ(0);
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover video {
+  transform: scale(1.2);
+}
+
+/* TITLE */
+.section-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-align: center;
+}

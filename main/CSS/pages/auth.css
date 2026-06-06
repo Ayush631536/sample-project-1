@@ -1,0 +1,196 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #1a0f08, #000000);
+      overflow: hidden;
+    }
+
+    /* Animated background glow */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(196,155,99,0.25), transparent);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .container {
+      position: relative;
+      width: 900px;
+      height: 550px;
+      border-radius: 25px;
+      backdrop-filter: blur(20px);
+      background: rgba(15, 15, 15, 0.6);
+      box-shadow: 0 0 80px rgba(196,155,99,0.3);
+      overflow: hidden;
+    }
+
+    .form-container {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      top: 0;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .login-container { left: 0; z-index: 2; }
+    .register-container { left: 50%; opacity: 0; z-index: 1; }
+
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 50px;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #c49b63;
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px rgba(196,155,99,0.8);
+      background: rgba(255,255,255,0.08);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 45px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #6f421e, #c49b63);
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(196,155,99,0.7);
+    }
+
+    .overlay-container {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 0.6s ease-in-out;
+      z-index: 100;
+    }
+
+    .overlay {
+      background: linear-gradient(135deg, #6f421e, #c49b63);
+      position: relative;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .overlay-panel {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 40px;
+      color: white;
+    }
+
+    .overlay-panel p { margin: 20px 0; }
+
+    .ghost {
+      background: transparent;
+      border: 1px solid white;
+    }
+
+    /* Animation */
+    .container.right-active .login-container {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .container.right-active .register-container {
+      transform: translateX(0);
+      opacity: 1;
+      z-index: 5;
+    }
+
+    .container.right-active .overlay-container {
+      transform: translateX(-100%);
+    }
+
+    .container.right-active .overlay {
+      transform: translateX(50%);
+    }
+
+    #toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 250px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+/* Show state */
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Types */
+.toast-success {
+  background: #00c853;
+}
+
+.toast-error {
+  background: #ff1744;
+}
+
+.toast-warning {
+  background: #ff9100;
+}
